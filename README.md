@@ -1,2 +1,2 @@
 # PsEnterpriseRest
-Access SAP BI Platform''s RESTful SDK
+Access SAP BI Platform's RESTful SDK
