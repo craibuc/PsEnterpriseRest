@@ -42,7 +42,7 @@ Version 4.1 of the RESTful SDK doesn't support full paths to the infoobjects, so
 
 To get a folder's ID, right click the folder in the CMC and select Properties; locate the ID (circled in red):
 
-[Properties!](Images/Folder Properties.png)
+[Properties](Images/Folder Properties.png)
 
 ~~~powershell
 # get the objects (e.g. folders, webi documents, Crystal Reports) in folder 9765
