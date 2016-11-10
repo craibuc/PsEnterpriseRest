@@ -17,6 +17,15 @@ PS> cd ~\Documents\WindowPowerShell
 PS> git clone https://github.com/craibuc/PsEnterpriseRest
 ~~~
 
+In either case, set the `Server` setting in the `PsEnterpriseRest.psd1` file to the desired value:
+
+~~~powershell
+PrivateData = @{
+    # $MyInvocation.MyCommand.Module.PrivateData.Server
+    Server='[supply the name of the server]:6405';
+    ...
+}
+~~~
 ## Usage
 
 ### Basics
