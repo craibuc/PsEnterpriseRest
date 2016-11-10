@@ -6,17 +6,20 @@
 Describe "Get-InfoObject" {
 
 	# arrange
-	$server = Read-Host "Enter server"	
+	$server = Read-Host "Enter server"
 	$authentication = 'secWinAD'
 	$username = Read-Host "Enter username"
 	$securePassword = Read-Host "Enter password" -AsSecureString
 
-	Context "Folder contents" {
-		$path="infostore/Root%20Folder/children"
+	$token = Get-LogonToken -Server $server -Authentication $authentication -Username $username -Password $securePassword
+
+	Context "Valid Uri supplied" {
+
+		$path="infostore/Root Folder/children"
 
 		It "Retrieves an array of PsCustomObjects" {
+
 			# act
-			$token = Get-LogonToken -Server $server -Authentication $authentication -Username $username -Password $securePassword 
 			$actual = Get-InfoObject -Token $token -Path $path -Verbose
 
 			# assert
@@ -33,11 +36,24 @@ Describe "Get-InfoObject" {
 			#     }
 			# } | select  name,type
 		}
-		
-	}
 
-	Context "Webi documents" {
-		$path="raylight/v1/documents/"
-	}
+	} # /Context
+
+	Context "Invalid Uri supplied" {
+
+		$path="infostore/Root Folder/children"
+
+		It "It throws an 404 exception" {
+
+			# act / assert
+			{  Get-InfoObject -Token $token -Path $path -Verbose} | Should Throw
+
+		}
+
+	} # /Context
+
+	# Context "Webi documents" {
+	# 	$path="raylight/v1/documents/"
+	# }
 
 }
