@@ -1,3 +1,5 @@
+Write-Debug "Importing module PsEnterpriseRest..."
+
 #
 # load (dot-source) *.PS1 files, excluding unit-test scripts (*.Tests.*), and disabled scripts (__*)
 #
@@ -7,12 +9,12 @@
     % {
 
         # dot-source script
-        # Write-Host "Loading $($_.BaseName)"
+        Write-Debug "Loading $($_.BaseName)"
         . $_
 
-        # export functions in the `Public` folder
-        if ( (Split-Path( $_.Directory) -Leaf) -Eq 'Public' ) {
-            # Write-Host "Exporting $($_.BaseName)"
+        # export functions in the `Functions` folder
+        if ( (Split-Path( $_.Directory) -Leaf) -Eq 'Functions' ) {
+            Write-Debug "Exporting $($_.BaseName)"
             Export-ModuleMember $_.BaseName
         }
 
