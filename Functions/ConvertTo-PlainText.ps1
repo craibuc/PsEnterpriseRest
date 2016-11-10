@@ -3,6 +3,8 @@
 Convert an encrypted string ([System.Security.SecureString]) to its plain-text equivalent ([System.String])
 
 .DESCRIPTION
+Convert an encrypted string ([System.Security.SecureString]) to its plain-text equivalent ([System.String])
+
 .PARAMETER $SecureString
 The encrypted value to be converted.
 
